@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Show Password",
+  "version": "1.0",
+
+  "description": "Show password in all text inputs.",
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "scripting"
+  ],
+  "icons": {
+    "48": "icons/show_password_48.png"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}
