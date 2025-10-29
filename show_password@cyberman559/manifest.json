@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Show Password",
-  "version": "1.0",
+  "version": "2.0",
   "applications": {
     "gecko": {
       "id": "show_password@cyberman559",
