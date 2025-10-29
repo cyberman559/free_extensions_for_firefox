@@ -2,7 +2,12 @@
   "manifest_version": 2,
   "name": "Show Password",
   "version": "1.0",
-
+  "applications": {
+    "gecko": {
+      "id": "show_password@cyberman559",
+      "strict_min_version": "96.0.0"
+    }
+  },
   "description": "Show password in all text inputs.",
   "permissions": [
     "contextMenus",
