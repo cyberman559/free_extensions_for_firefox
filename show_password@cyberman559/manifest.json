@@ -12,7 +12,8 @@
   "permissions": [
     "contextMenus",
     "activeTab",
-    "scripting"
+    "scripting",
+    "<all_urls>"
   ],
   "icons": {
     "48": "icons/show_password_48.png"
