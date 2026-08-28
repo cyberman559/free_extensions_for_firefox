@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "Dev URL",
+  "version": "1.0",
+  "applications": {
+    "gecko": {
+      "id": "dev_url@cyberman559",
+      "strict_min_version": "96.0.0"
+    }
+  },
+  "description": "Изменяет строку url по предустановленным параметрам",
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "scripting",
+    "<all_urls>"
+  ],
+  "icons": {
+    "48": "icons/dev_url_48.png"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}

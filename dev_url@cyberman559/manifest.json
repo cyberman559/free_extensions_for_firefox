@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Dev URL",
+  "name": "Dev URL Switch",
   "version": "1.0",
   "applications": {
     "gecko": {
@@ -8,18 +8,28 @@
       "strict_min_version": "96.0.0"
     }
   },
-  "description": "Изменяет строку url по предустановленным параметрам",
+  "description": "Dev-Prod domain Switch and Indicator",
   "permissions": [
-    "contextMenus",
-    "activeTab",
-    "scripting",
-    "<all_urls>"
+    "storage",
+    "activeTab"
   ],
   "icons": {
-    "48": "icons/dev_url_48.png"
+    "48": "icons/icon-active-48.png",
+    "96": "icons/icon-active-96.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "48": "icons/icon-inactive-48.png",
+      "96": "icons/icon-inactive-96.png"
+    },
+    "default_title": "Dev URL Switch"
   },
   "background": {
     "scripts": ["background.js"],
     "persistent": false
+  },
+  "options_ui": {
+    "page": "options.html",
+    "browser_style": false
   }
 }
