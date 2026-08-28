@@ -1,0 +1,39 @@
+{
+  "manifest_version": 2,
+  "name": "Site Inspector",
+  "version": "1.0",
+  "applications": {
+    "gecko": {
+      "id": "site_inspector@cyberman559",
+      "strict_min_version": "96.0.0"
+    }
+  },
+  "description": "Detects Bitrix-powered websites",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "*://*/*"
+  ],
+  "icons": {
+    "48": "icons/icon-active-48.png",
+    "96": "icons/icon-active-96.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "48": "icons/icon-inactive-48.png",
+      "96": "icons/icon-inactive-96.png"
+    },
+    "default_title": "Site Inspector"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
