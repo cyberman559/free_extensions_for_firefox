@@ -61,12 +61,15 @@ function updateIcon() {
 
 /**
  * Переключает dev ↔ prod.
+ * @param {number} button — 0=левый (текущая вкладка), 1=средний (новая вкладка)
  */
-function switchDomain() {
+function switchDomain(button) {
   if (!devDomain) {
     alert("Dev Domain не настроен!\n\nОткрой: about:addons → Dev URL Switch → Параметры");
     return;
   }
+  
+  const openInNewTab = button === 1;
   
   browser.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
     if (!tabs[0] || !tabs[0].url) return;
@@ -77,7 +80,13 @@ function switchDomain() {
       const isDev = checkIsDev(hostname, devDomain);
       
       url.hostname = isDev ? devToProd(hostname, devDomain) : prodToDev(hostname, devDomain);
-      browser.tabs.update(tabs[0].id, { url: url.toString() });
+      const newUrl = url.toString();
+      
+      if (openInNewTab) {
+        browser.tabs.create({ url: newUrl, active: true });
+      } else {
+        browser.tabs.update(tabs[0].id, { url: newUrl });
+      }
     } catch (e) {}
   });
 }
@@ -88,8 +97,10 @@ browser.storage.local.get("devDomain").then((result) => {
   updateIcon();
 });
 
-// Левый клик — переключение домена
-browser.browserAction.onClicked.addListener(switchDomain);
+// Клик по иконке: левый (button=0) — текущая вкладка, средний (button=1) — новая вкладка
+browser.browserAction.onClicked.addListener((tab, onClickData) => {
+  switchDomain(onClickData ? onClickData.button : 0);
+});
 
 // Обновление иконки
 browser.tabs.onActivated.addListener(updateIcon);
