@@ -14,7 +14,7 @@ function checkIsDev(hostname, dDomain) {
   if (host === dDomain) return false;
   if (!host.endsWith(suffix)) return false;
   
-  const prefix = host.slice(0, host.length - suffix.length - 1);
+  const prefix = host.slice(0, host.length - suffix.length);
   return prefix.split(".").length >= 2;
 }
 
